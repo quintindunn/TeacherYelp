@@ -39,7 +39,7 @@
         <div class="top-teachers">
             <h2>Top Teachers</h2>
             <div class="teachers">
-                {% for teacher in sorted_teachers %}
+                {% for teacher in sorted_teachers|slice:"3" %}
                     <div class="teacher-card">
                         <div class="teacher">
                             <div class="teacher-image">
