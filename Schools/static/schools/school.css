@@ -1,0 +1,114 @@
+body {
+    background-color: #f0f0f0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    color: #333333;
+    padding: 0;
+    margin: 0;
+}
+
+.school {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.banner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    width: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+.teachers {
+    /* align everything in a row */
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+
+}
+
+.teacher-card {
+    background: #eaeaea;
+    border: #eaeaea;
+    border-radius: 5px;
+    width: 230px;
+    height: 290px;
+    margin: 10px;
+    padding: 10px;
+    /* if it doesn't fit, wrap it */
+
+}
+
+.teacher-image img{
+    margin-top: 20px;
+    width: 150px;
+    aspect-ratio: 1/1;
+}
+
+.teacher-info {
+    position: relative;
+    top: 20px;
+
+}
+
+.teacher-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+
+/* <!-- CREDIT: https://codepen.io/ianmcodes/full/VwvXYYG --> */
+.rating {
+  width: 120px;
+  height: 24px;
+  position: relative;
+}
+
+.rating progress.rating-bg {
+  -webkit-appearance: none;
+  -moz-appearence: none;
+  appearance: none;
+  border: none;
+  display: inline-block;
+  height: 24px;
+  width: 100%;
+  color: orange;
+}
+
+.rating progress.rating-bg::-webkit-progress-value {
+  background-color: orange;
+}
+
+.rating progress.rating-bg::-moz-progress-bar {
+  background-color: orange;
+}
+
+.rating svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

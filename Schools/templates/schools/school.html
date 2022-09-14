@@ -1,0 +1,69 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ school.name }}</title>
+    <link rel="stylesheet" href="{% static 'schools/school.css' %}">
+</head>
+<body>
+    <!-- CREDIT: https://codepen.io/ianmcodes/full/VwvXYYG -->
+    <svg style="display:none;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">>
+      <defs>
+        <symbol id="fivestars">
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="#eaeaea" fill-rule="evenodd"></path>
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="#eaeaea" fill-rule="evenodd" transform="translate(24)"></path>
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="#eaeaea" fill-rule="evenodd" transform="translate(48)"></path>
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="#eaeaea" fill-rule="evenodd" transform="translate(72)"></path>
+          <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z M0 0 h24 v24 h-24 v-24" fill="#eaeaea" fill-rule="evenodd"  transform="translate(96)"></path>
+        </symbol>
+      </defs>
+    </svg>
+    <div class="school">
+        <div class="banner" style="background-image: url('{{ school.image }}');"></div>
+        <div class="content">
+            <div class="title">
+                <h1>{{ school.name }}</h1>
+                <p>{{ school.description }}</p>
+            </div>
+            <div class="info">
+                <ul style="text-align: left">
+                    <li>&emsp;Address: {{ school.address }}</li>
+                    <li>&emsp;Website: <a href="{{ school.website }}" style="text-decoration: none;">{{ school.website }}</a></li>
+                    <li>&emsp;Average Teacher Rating: {{ school_rating|floatformat:2 }}</li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="top-teachers">
+            <h2>Top Teachers</h2>
+            <div class="teachers">
+                {% for teacher in sorted_teachers %}
+                    <div class="teacher-card">
+                        <div class="teacher">
+                            <div class="teacher-image">
+                                    <img src="{% if teacher.image %}{{ teacher.image }}{% else %}{% static 'NoPic.png' %}{% endif %}" alt="teacher">
+
+                            </div>
+                            <div class="teacher-info">
+                                <h3>{{ teacher.prefix }}{{ teacher.last_name }}</h3>
+                                <p>{{ teacher.description }}</p>
+                                <span>{{ teacher.rating }}</span>
+                                <div class="teacher-rating">
+                                    <div class="rating">
+                                    <!--   <div class="rating-bg" style="width: 90%;"></div> -->
+                                      <progress class="rating-bg" value="{{ teacher.rating }}" max="5"></progress>
+                                      <svg><use xlink:href="#fivestars"></use></svg>
+                                    </div>
+                                </div>
+
+                            </div>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
